@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.domain.City;
-import com.ibm.spss.boot.service.CityRepository;
 
 @Path("/sample")
 public class SampleResource {

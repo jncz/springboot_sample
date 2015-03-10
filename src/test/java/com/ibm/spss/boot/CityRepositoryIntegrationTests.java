@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.domain.City;
-import com.ibm.spss.boot.service.CityRepository;
 
 public class CityRepositoryIntegrationTests extends ServiceBaseTest{
 

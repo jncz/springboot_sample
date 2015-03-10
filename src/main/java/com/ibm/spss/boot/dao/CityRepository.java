@@ -1,4 +1,4 @@
-package com.ibm.spss.boot.service;
+package com.ibm.spss.boot.dao;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

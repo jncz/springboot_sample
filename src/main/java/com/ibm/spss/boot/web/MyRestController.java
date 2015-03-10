@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.domain.City;
-import com.ibm.spss.boot.service.CityRepository;
 
 @RestController
 @RequestMapping(value="/city")

@@ -16,10 +16,10 @@ import javax.ws.rs.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ibm.spss.boot.dao.RoleRepository;
+import com.ibm.spss.boot.dao.UserRepository;
 import com.ibm.spss.boot.domain.Role;
 import com.ibm.spss.boot.domain.User;
-import com.ibm.spss.boot.service.RoleRepository;
-import com.ibm.spss.boot.service.UserRepository;
 
 @Path("/user")
 public class UserRoleResource {

@@ -7,10 +7,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.ibm.spss.boot.dao.RoleRepository;
+import com.ibm.spss.boot.dao.UserRepository;
 import com.ibm.spss.boot.domain.Role;
 import com.ibm.spss.boot.domain.User;
-import com.ibm.spss.boot.service.RoleRepository;
-import com.ibm.spss.boot.service.UserRepository;
 
 public class UserRepositoryIntegrationTests extends ServiceBaseTest{
 	
