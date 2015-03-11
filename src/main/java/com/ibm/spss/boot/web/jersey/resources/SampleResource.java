@@ -9,7 +9,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+import org.glassfish.jersey.media.multipart.FormDataMultiPart;
+import org.glassfish.jersey.media.multipart.MultiPart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -58,5 +62,24 @@ public class SampleResource {
 		City a = repository.save(city );
 		
 		return ""+a.getId();
+	}
+	
+//	@POST
+//	@Path("file")
+//	@Consumes(MediaType.MULTIPART_FORM_DATA)
+//	public @ResponseBody String testUploadFile(
+//			@FormDataParam("file") InputStream file,
+//			@FormDataParam("file") FormDataContentDisposition fileDisposition) {
+//		
+//		String name = fileDisposition.getFileName();
+//		
+//		return "uploaded file name is: "+name;
+//	}
+	
+	@POST
+	@Path("f2")
+	public @ResponseBody String post(final FormDataMultiPart multiPart) {
+		String name = multiPart.getBodyParts().get(0).getContentDisposition().getFileName();
+	    return "file name is: "+name;
 	}
 }
