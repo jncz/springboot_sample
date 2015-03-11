@@ -12,7 +12,8 @@ import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.HiddenHttpMethodFilter;
+
+import com.ibm.spss.boot.web.sitemesh.SitemeshFilter;
 
 @Configuration
 public class GlobalConfiguration {
@@ -35,9 +36,10 @@ public class GlobalConfiguration {
 	}
 	
 	@Bean
-	public FilterRegistrationBean myFilter() {
+	public FilterRegistrationBean sitemesh3() {
 	    FilterRegistrationBean registration = new FilterRegistrationBean();
-	    registration.setFilter(new HiddenHttpMethodFilter());
+	    registration.setFilter(new SitemeshFilter());
+	    registration.setOrder(100);
 	    registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
 	    return registration;
 	}

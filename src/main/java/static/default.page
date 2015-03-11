@@ -1,0 +1,9 @@
+<html>
+<head>
+	<meta decorator="/pages/sitemesh/decorator.html"></meta>
+	<title>This is a default page</title>
+</head>
+<body>
+	<h1>This is a test page</h1>
+</body>
+</html>
