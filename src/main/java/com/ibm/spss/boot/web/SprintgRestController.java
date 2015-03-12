@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.spss.boot.dao.CityRepository;
+import com.ibm.spss.boot.dao.ElasticUserRepository;
 import com.ibm.spss.boot.domain.City;
+import com.ibm.spss.boot.domain.DocUser;
+import com.ibm.spss.boot.domain.User;
 import com.ibm.spss.boot.Constants;
 
 @RestController
@@ -22,6 +25,9 @@ public class SprintgRestController {
 
 	@Autowired
 	private CityRepository repository;
+	
+	@Autowired
+	private ElasticUserRepository elaURepo;
 	
 	@Value("${app.name}")
 	private String appname;
@@ -34,6 +40,20 @@ public class SprintgRestController {
 	@RequestMapping(value="/appname",method=RequestMethod.GET)
     public String get_appname() {
     	return "app name is: "+appname;
+    }
+	
+	@RequestMapping(value="/elastic",method=RequestMethod.GET)
+    public DocUser get_user_by_elastic(@RequestParam Long id) {
+		DocUser user = elaURepo.findOne(id);
+    	return user;
+    }
+	
+	@RequestMapping(value="/elastic",method=RequestMethod.PUT)
+    public DocUser save_user_by_elastic(@RequestParam String name,@RequestParam Long id) {
+		DocUser user = new DocUser(name);
+		user.setId(id);
+		user = elaURepo.save(user);
+    	return user;
     }
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)
