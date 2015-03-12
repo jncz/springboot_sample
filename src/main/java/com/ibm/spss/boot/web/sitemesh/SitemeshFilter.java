@@ -6,12 +6,13 @@ import com.ibm.spss.boot.Constants;
 
 public class SitemeshFilter extends ConfigurableSiteMeshFilter {
 
-	private static final String SITEMESH_DECORATOR_TEMPLATE = "/pages/sitemesh/decorator.template";
+	private static final String SITEMESH_DECORATOR_TEMPLATE = "/pages/sitemesh/decorator.html";
 
 	@Override
 	protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
-		builder.addDecoratorPath("/", SITEMESH_DECORATOR_TEMPLATE)
-		.addDecoratorPath("/*", SITEMESH_DECORATOR_TEMPLATE)
-				.addExcludedPath("/jersey/*").addExcludedPath(Constants.RESTPATH_SPRING_SAMPLE+"/*");
+		builder.addDecoratorPath("/*", SITEMESH_DECORATOR_TEMPLATE)
+				.addExcludedPath("/jersey/*")
+				.addExcludedPath(Constants.RESTPATH_SPRING_SAMPLE+"/*")
+				.addExcludedPath("/pages/sitemesh/*");
 	}
 }

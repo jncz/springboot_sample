@@ -39,7 +39,6 @@ public class GlobalConfiguration {
 	public FilterRegistrationBean sitemesh3() {
 	    FilterRegistrationBean registration = new FilterRegistrationBean();
 	    registration.setFilter(new SitemeshFilter());
-	    registration.setOrder(100);
 	    registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
 	    return registration;
 	}
