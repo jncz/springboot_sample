@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,9 +23,17 @@ public class SprintgRestController {
 	@Autowired
 	private CityRepository repository;
 	
+	@Value("${app.name}")
+	private String appname;
+	
 	@RequestMapping(method=RequestMethod.GET)
     public String get_root_path() {
     	return "root path";
+    }
+	
+	@RequestMapping(value="/appname",method=RequestMethod.GET)
+    public String get_appname() {
+    	return "app name is: "+appname;
     }
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)
