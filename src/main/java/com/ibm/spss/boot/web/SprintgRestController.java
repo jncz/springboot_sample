@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.spss.boot.Constants;
+import com.ibm.spss.boot.cache.Cache;
 import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.dao.ElasticUserRepository;
 import com.ibm.spss.boot.domain.City;
 import com.ibm.spss.boot.domain.DocUser;
-import com.ibm.spss.boot.domain.User;
-import com.ibm.spss.boot.Constants;
 
 @RestController
 @RequestMapping(value=Constants.RESTPATH_SPRING_SAMPLE)
@@ -28,6 +28,9 @@ public class SprintgRestController {
 	
 	@Autowired
 	private ElasticUserRepository elaURepo;
+	
+	@Autowired
+	private Cache cache;
 	
 	@Value("${app.name}")
 	private String appname;
@@ -54,6 +57,16 @@ public class SprintgRestController {
 		user.setId(id);
 		user = elaURepo.save(user);
     	return user;
+    }
+	
+	@RequestMapping(value="/cache",method=RequestMethod.PUT)
+    public void put_to_cache(@RequestParam String key,@RequestParam String value) {
+		cache.put(key, value);
+    }
+	
+	@RequestMapping(value="/cache",method=RequestMethod.GET)
+    public String get_from_cache(@RequestParam String key) {
+		return cache.get(key);
     }
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)
