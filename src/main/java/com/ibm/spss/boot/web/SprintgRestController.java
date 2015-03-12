@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.http.Part;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,8 @@ import com.ibm.spss.boot.domain.DocUser;
 @RequestMapping(value=Constants.RESTPATH_SPRING_SAMPLE)
 public class SprintgRestController {
 
+	private Log log = LogFactory.getLog(SprintgRestController.class);
+	
 	@Autowired
 	private CityRepository repository;
 	
@@ -38,6 +42,12 @@ public class SprintgRestController {
 	@RequestMapping(method=RequestMethod.GET)
     public String get_root_path() {
     	return "root path";
+    }
+	
+	@RequestMapping(value="/log",method=RequestMethod.GET)
+    public String test_log() {
+		log.info("This is a test log");
+    	return log == null?"no log":log.toString();
     }
 	
 	@RequestMapping(value="/appname",method=RequestMethod.GET)
