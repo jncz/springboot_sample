@@ -17,6 +17,12 @@ public class Mail {
 	@Value("${spring.mail.username}")
 	private String mailFrom;
 	
+	/**
+	 * send simple mail. no complex format.
+	 * @param to
+	 * @param subject
+	 * @param msg
+	 */
 	public void send(final String to, final String subject,final String msg){
 		Thread t = new Thread(){
 
