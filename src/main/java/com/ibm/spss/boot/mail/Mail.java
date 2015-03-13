@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service;
 public class Mail {
 	@Autowired
 	private MailSender sender;
+	
+	@Autowired
+    private TaskExecutor executor;
 	
 	@Value("${spring.mail.username}")
 	private String mailFrom;
@@ -24,7 +28,7 @@ public class Mail {
 	 * @param msg
 	 */
 	public void send(final String to, final String subject,final String msg){
-		Thread t = new Thread(){
+		executor.execute(new Runnable(){
 
 			@Override
 			public void run() {
@@ -33,11 +37,9 @@ public class Mail {
 				mail.setTo(to);
 				mail.setSubject(subject);
 				mail.setText(msg);
-				sender.send(mail);
+				sender.send(mail);				
 			}
 			
-		};
-		
-		t.start();
+		});
 	}
 }

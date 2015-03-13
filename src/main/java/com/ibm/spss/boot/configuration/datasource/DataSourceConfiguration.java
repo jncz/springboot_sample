@@ -9,7 +9,7 @@ import com.ibm.spss.boot.util.RunningProfile;
 
 //@Configuration
 //@Profile(RunningProfile.Production)
-public class DataSourceConfig {
+public class DataSourceConfiguration {
 
 	public DataSource getDatasource(){
 	

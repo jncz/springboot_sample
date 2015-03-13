@@ -8,6 +8,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -111,5 +113,33 @@ public class SprintgRestController {
     	mail.send(to,subject,msg);
     	return "mail send";
     }
+    
+    @Autowired
+    private TaskExecutor executor;
+    
+    @RequestMapping(value="task",method=RequestMethod.GET)
+    public String task(){
+    	executor.execute(new Runnable(){
 
+			@Override
+			public void run() {
+				log.info("executor called");
+				
+			}});
+    	return "task fired";
+    }
+    
+    @Autowired
+    private TaskScheduler scheduler;
+    
+    @RequestMapping(value="schedule",method=RequestMethod.GET)
+    public String schedule(){
+    	scheduler.scheduleWithFixedDelay(new Runnable(){
+
+			@Override
+			public void run() {
+				log.info("scheduler executor called");
+			}}, 1000*30);
+    	return "scheduler fired";
+    }
 }
