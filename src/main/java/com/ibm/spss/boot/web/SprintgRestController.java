@@ -20,6 +20,7 @@ import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.dao.ElasticUserRepository;
 import com.ibm.spss.boot.domain.City;
 import com.ibm.spss.boot.domain.DocUser;
+import com.ibm.spss.boot.mail.Mail;
 
 @RestController
 @RequestMapping(value=Constants.RESTPATH_SPRING_SAMPLE)
@@ -100,6 +101,15 @@ public class SprintgRestController {
     public String handleFormUpload(@RequestParam("filename") String name,@RequestParam("file") Part file) throws IOException {
 
         return "upload file orginal name is: "+file.getSubmittedFileName()+", new name is: "+name;
+    }
+    
+    @Autowired
+    private Mail mail;
+    
+    @RequestMapping(value="mail",method=RequestMethod.POST)
+    public String send_mail(@RequestParam String to, @RequestParam String subject, @RequestParam String msg){
+    	mail.send(to,subject,msg);
+    	return "mail send";
     }
 
 }
