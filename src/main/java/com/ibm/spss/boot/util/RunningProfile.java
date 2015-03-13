@@ -6,4 +6,6 @@ public interface RunningProfile {
 	
 	String SimpleCache = "simple_cache";
 	String ExternalCache = "cache";
+	
+	String Default = "default";
 }

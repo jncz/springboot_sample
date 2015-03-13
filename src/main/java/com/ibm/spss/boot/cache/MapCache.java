@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.ibm.spss.boot.util.RunningProfile;
 
 @Service
-@Profile({RunningProfile.Dev,RunningProfile.SimpleCache})
+@Profile({RunningProfile.Dev,RunningProfile.SimpleCache,RunningProfile.Default})
 public class MapCache implements Cache {
 	private Map<String,String> cache =  Collections.synchronizedMap(new WeakHashMap<String,String>());
 	@Override
