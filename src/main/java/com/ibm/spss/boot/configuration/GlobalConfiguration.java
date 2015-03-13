@@ -20,9 +20,11 @@ import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
 
+import com.ibm.spss.boot.util.RunningProfile;
 import com.ibm.spss.boot.web.sitemesh.SitemeshFilter;
 
 @Configuration
@@ -54,6 +56,7 @@ public class GlobalConfiguration {
 	}
 	
 	@Bean
+	@Profile(RunningProfile.Production)
 	public EmbeddedServletContainerFactory servletContainer() {
 		TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
 		tomcat.addAdditionalTomcatConnectors(createSslConnector());
