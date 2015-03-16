@@ -1,6 +1,7 @@
 package com.ibm.spss.boot.web;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.Part;
 
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.velocity.VelocityView;
 
 import com.ibm.spss.boot.Constants;
 import com.ibm.spss.boot.cache.Cache;
@@ -141,5 +145,16 @@ public class SprintgRestController {
 				log.info("scheduler executor called");
 			}}, 1000*30);
     	return "scheduler fired";
+    }
+    
+    @RequestMapping(value="velocity",method=RequestMethod.GET)
+    public ModelAndView velocity(Map<String, Object> model){
+    	model.put("name", "velocity test sample");
+    	ModelAndView v = new ModelAndView("vm",model);
+//    	View view = new VelocityView();
+//		v.setView(view );
+//		v.setViewName("vm");
+//		v.addObject(model);
+    	return v;
     }
 }
