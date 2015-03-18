@@ -5,4 +5,6 @@ public class Constants {
 	
 	public static final String PAGE_PATH_BASE = "/pages";
 	public static final String PAGE_PATH_ADMIN = PAGE_PATH_BASE+"/admin";
+
+	public static final String RESTPATH_PUBLIC_API = "/api/public";
 }

@@ -12,9 +12,9 @@ public class SitemeshFilter extends ConfigurableSiteMeshFilter {
 	@Override
 	protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
 		builder.addDecoratorPath("/*", SITEMESH_DECORATOR_TEMPLATE)
-				.addDecoratorPath(Constants.PAGE_PATH_BASE+"/*", SITEMESH_DECORATOR_DASHBOARD_TEMPLATE)
-				.addExcludedPath(Constants.PAGE_PATH_BASE+"/login.html")
-				.addExcludedPath("/jersey/*")
+				.addDecoratorPath(Constants.PAGE_PATH_ADMIN+"/*", SITEMESH_DECORATOR_DASHBOARD_TEMPLATE)
+				.addExcludedPath(Constants.PAGE_PATH_ADMIN+"/login.html")
+				.addExcludedPath("/jersey/**")
 				.addExcludedPath(Constants.RESTPATH_SPRING_SAMPLE+"/*")
 				.addExcludedPath("/pages/sitemesh/*");
 	}
