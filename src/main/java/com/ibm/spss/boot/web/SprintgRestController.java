@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.view.velocity.VelocityView;
 
 import com.ibm.spss.boot.Constants;
 import com.ibm.spss.boot.cache.Cache;
 import com.ibm.spss.boot.configuration.mail.Mail;
+import com.ibm.spss.boot.configuration.sms.SMSMessage;
+import com.ibm.spss.boot.configuration.sms.SMSSender;
 import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.dao.ElasticUserRepository;
 import com.ibm.spss.boot.domain.City;
@@ -156,5 +156,17 @@ public class SprintgRestController {
 //		v.setViewName("vm");
 //		v.addObject(model);
     	return v;
+    }
+    
+    @Autowired
+    private SMSSender sender;
+    
+    @RequestMapping(value="sms",method=RequestMethod.POST)
+    public String sendSMS(){
+    	String to = "phonenumber";
+    	String text = "sms text";
+		SMSMessage msg = new SMSMessage(to,text);
+		sender.send(msg);
+    	return "sms send";
     }
 }
