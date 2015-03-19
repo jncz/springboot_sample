@@ -1,7 +1,5 @@
 package com.ibm.spss.boot.configuration.mail;
 
-import javax.inject.Singleton;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.task.TaskExecutor;
@@ -10,7 +8,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 @Service
-@Singleton
 public class Mail {
 	@Autowired
 	private MailSender sender;
