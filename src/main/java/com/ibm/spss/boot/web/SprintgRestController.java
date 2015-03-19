@@ -22,11 +22,11 @@ import org.springframework.web.servlet.view.velocity.VelocityView;
 
 import com.ibm.spss.boot.Constants;
 import com.ibm.spss.boot.cache.Cache;
+import com.ibm.spss.boot.configuration.mail.Mail;
 import com.ibm.spss.boot.dao.CityRepository;
 import com.ibm.spss.boot.dao.ElasticUserRepository;
 import com.ibm.spss.boot.domain.City;
 import com.ibm.spss.boot.domain.DocUser;
-import com.ibm.spss.boot.mail.Mail;
 
 @RestController
 @RequestMapping(value=Constants.RESTPATH_SPRING_SAMPLE)

@@ -9,9 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.MailSender;
 
 import com.ibm.spss.boot.Constants;
-import com.ibm.spss.boot.mail.MailProperties;
-import com.ibm.spss.boot.mail.SendCloudMailSenderSMTPImpl;
-import com.ibm.spss.boot.mail.SendCloudMailSenderWebApiImpl;
 
 @Configuration
 @EnableConfigurationProperties(MailProperties.class)

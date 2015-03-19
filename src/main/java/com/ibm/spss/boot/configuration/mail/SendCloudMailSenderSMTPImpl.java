@@ -1,4 +1,4 @@
-package com.ibm.spss.boot.mail;
+package com.ibm.spss.boot.configuration.mail;
 
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;

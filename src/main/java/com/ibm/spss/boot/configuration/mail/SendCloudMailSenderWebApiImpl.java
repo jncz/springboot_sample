@@ -1,4 +1,4 @@
-package com.ibm.spss.boot.mail;
+package com.ibm.spss.boot.configuration.mail;
 
 import java.io.IOException;
 import java.util.ArrayList;
