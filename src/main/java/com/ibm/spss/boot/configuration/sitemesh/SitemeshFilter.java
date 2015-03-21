@@ -1,4 +1,4 @@
-package com.ibm.spss.boot.web.sitemesh;
+package com.ibm.spss.boot.configuration.sitemesh;
 import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
 
